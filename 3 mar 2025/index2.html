@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> JS Ex 1</title>
+</head>
+<body>
+        <h1 style="color: pink;"> JS Example 2</h1>
+    
+        <div>
+        <label for="txt1">Value1</label>
+        <input type="text"id="val1" value="" name="val1" placeholder="Enter number"></div>
+        <div>
+            <label for="txt2">Value2</label>
+            <input type="text"id="val2" value="" name="val2" placeholder="Enter number"></div> 
+        <div>
+          <label for="txt3">Value3</label>
+          <input type="text"id="val3" value="" name="val3" placeholder="Enter number"></div>
+      <div><button onclick="getResult()">submit </button></div> 
+
+        <h1 style="color:skyblue;" id="flnumber"></h1>
+
+    <script>
+        function getfullname(){
+            
+            var val1=document.getElementById('text1').value;
+            var lname=document.getElementById('text2').value;
+            var lname=document.getElementById('text3').value;
+            var fullname = fname +" " + lname;
+            document.getElementById('flname').innerHTML = fullname;
+        }
+
+        function getResult(){
+            
+            var val1 =document.getElementById('val1').value;
+            var val2 =document.getElementById('val2').value;
+            var val3 =document.getElementById('val3').value;
+            var result;
+
+            if(!isNaN(val1) && !isNaN(val2) &&!isNaN(val3)) {
+                result=parseFloat(val1)+parseFloat(val2) +parseFloat(val3);
+            }else{
+                result= val1+val2+val3;
+            }
+            
+            
+             document.getElementById('flnumber').innerHTML = result;
+        }
+        
+    </script>
+    
+</body>
+</html>
