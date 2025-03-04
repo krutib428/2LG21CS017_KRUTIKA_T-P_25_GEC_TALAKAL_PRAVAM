@@ -1,0 +1,60 @@
+!DOCTYPE html>
+<html>
+<head>
+<style>
+   div{border:1px solid rgb(22, 21, 21);
+      border-radius: 15px ;}
+   .col{padding:20px 0px;}
+
+   .flex-container1{
+  display: flex;
+  justify-content: space-around;
+  background-color: white;
+  
+}
+.flex-container2 {
+  display: flex;
+  background-color: white;
+  justify-content: flex-end;
+}
+
+.flex-container1 > div {
+  background-color: #f1f1f1;
+  margin: 10px;
+  padding: 20px;
+  font-size: 30px;
+}
+.flex-container2 > div {
+  background-color: #f1f1f1;
+  margin: 10px;
+  padding: 20px;
+  font-size: 30px;
+}
+
+
+.disabled{
+  point-events :none;
+  opacity:0.5;
+  }
+</style>
+</head>
+<body>
+
+
+
+  <div class="flex-container1">  
+    <div style="flex-basis: 500px">
+      <span style="color: rgb(204, 38, 99);">Collab.</span>
+    </div>
+  
+  
+  <div>Home</div>
+  <div class="disabled">About</div>
+  <div class="disabled">Services</div>
+  <div class="disabled">Contact</div>
+  <div class="disabled">About</div>  
+</div>
+
+
+</body>
+</html>

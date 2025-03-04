@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+        <div>
+            <label for="txt1">value 1</label>
+            <input type="text" id="input1" placeholder="Enter first value">
+        </div>
+        <div>
+            <label for="txt2">value 2</label>
+            <input type="text" id="input2" placeholder="Enter second value">
+        </div>
+        <div>
+            <button onclick="performOperation()">Calculate</button>
+        </div>
+
+        <div id="result"></div>  
+
+        <script>
+            function performOperation(){
+                 val1 = document.getElementById("input1").value;
+                 val2 = document.getElementById("input2").value;
+                 resultDiv = document.getElementById("result");
+                
+                 // Try converting to numbers
+                 num1 = parseFloat(val1);
+                  num2 = parseFloat(val2);
+
+
+                if(!isNaN(val1) && !isNaN(val2) ){
+                  // Both are numbers, perform mathematical operations
+                 addition = num1 + num2;
+                 subtraction = num1 - num2;
+                multiplication = num1 * num2;
+                division = num2 !== 0 ? (num1 / num2).toFixed(2) : "Cannot divide by zero";
+                modulus = num1 % num2;
+                resultDiv.innerHTML = `
+                    <p>Addition: ${addition}</p>
+                    <p>Subtraction: ${subtraction}</p>
+                    <p>Multiplication: ${multiplication}</p>
+                    <p>Division: ${division}</p>
+                    <p>modulus: ${modulus}</p>
+                `;
+                }else {
+                    // At least one is a string, perform string concatenation
+                     normalConcat = val1 + val2;
+                     reverseConcat = val2 + val1;
+    
+                    resultDiv.innerHTML = `
+                        <p>Concatenation: ${normalConcat}</p>
+                        <p>Reverse Concatenation: ${reverseConcat}</p>
+                    `;
+                }
+            }
+        </script>
+</body>
+</html>
+        
