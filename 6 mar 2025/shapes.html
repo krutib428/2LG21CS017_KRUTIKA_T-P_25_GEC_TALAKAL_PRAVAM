@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamic Shapes with Radius/Dimensions</title>
+    <style>
+        #my-shape {
+            background-color: rgb(102, 235, 117);
+            margin-top: 20px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <form id="shape-form">
+        <label for="shape-select">Select Shape:</label>
+        <select id="shape-select">
+            <option value="square">Square</option>
+            <option value="rectangle">Rectangle</option>
+            <option value="circle">Circle</option>
+            <option value="ellipse">Ellipse</option>
+        </select><br><br>
+
+        <div id="width-height-inputs">
+            <label for="width-input">Width:</label>
+            <input type="number" id="width-input"><br><br>
+
+            <label for="height-input">Height:</label>
+            <input type="number" id="height-input"><br><br>
+        </div>
+
+        <div id="radius-input" style="display: none;">
+            <label for="radiusX-input">Radius X:</label>
+            <input type="number" id="radiusX-input"><br><br>
+
+            <label for="radiusY-input" style="display: none;">Radius Y:</label>
+            <input type="number" id="radiusY-input"><br><br>
+        </div>
+    </form>
+
+    <div id="my-shape"></div>
+
+    <script>
+        const shapeSelect = document.getElementById('shape-select');
+        const widthInput = document.getElementById('width-input');
+        const heightInput = document.getElementById('height-input');
+        const radiusXInput = document.getElementById('radiusX-input');
+        const radiusYInput = document.getElementById('radiusY-input');
+        const radiusInput = document.getElementById('radius-input');
+        const myShape = document.getElementById('my-shape');
+        const widthHeightInputs = document.getElementById('width-height-inputs');
+
+        function updateShape() {
+            const shape = shapeSelect.value;
+            let width, height;
+
+            if (shape === 'circle') {
+                const radius = parseInt(radiusXInput.value);
+                if (isNaN(radius) || radius <= 0) return;
+                width = height = (2 * radius) + 'px';
+                myShape.style.borderRadius = '50%';
+            } else if (shape === 'ellipse') {
+                const radiusX = parseInt(radiusXInput.value);
+                const radiusY = parseInt(radiusYInput.value);
+                if (isNaN(radiusX) || radiusX <= 0 || isNaN(radiusY) || radiusY <= 0) return;
+                width = (2 * radiusX) + 'px';
+                height = (2 * radiusY) + 'px';
+                myShape.style.borderRadius = '50% / 50%';
+            } else {
+                width = parseInt(widthInput.value);
+                height = parseInt(heightInput.value);
+                if (isNaN(width) || isNaN(height) || width <= 0 || height <= 0) return;
+                
+                if (shape === 'square') {
+                    height = width; // Force equal width and height for squares
+                }
+                width += 'px';
+                height += 'px';
+                myShape.style.borderRadius = '0';
+            }
+
+            myShape.style.width = width;
+            myShape.style.height = height;
+            myShape.style.display = 'block';
+        }
+
+        shapeSelect.addEventListener('change', function () {
+            if (this.value === 'circle') {
+                widthHeightInputs.style.display = 'none';
+                radiusInput.style.display = 'block';
+                radiusYInput.style.display = 'none';
+            } else if (this.value === 'ellipse') {
+                widthHeightInputs.style.display = 'none';
+                radiusInput.style.display = 'block';
+                radiusYInput.style.display = 'inline-block';
+            } else {
+                widthHeightInputs.style.display = 'block';
+                radiusInput.style.display = 'none';
+            }
+            myShape.style.display = 'none';
+        });
+
+        // Automatically update shape when input values change
+        document.querySelectorAll('input, select').forEach(input => {
+            input.addEventListener('input', updateShape);
+        });
+    </script>
+</body>
+</html>
