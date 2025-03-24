@@ -7,52 +7,53 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import com.example.studentcrud.model.Student;
-import com.example.studentcrud.service.StudentService;
 
+import com.example.studentcrud.model.Staff;
+import com.example.studentcrud.service.StaffService;
 import org.springframework.ui.Model;
 
 @Controller
 @RequestMapping("/users")
-public class StudentController {
+public class StaffController {
 
     @Autowired
-    private StudentService studentService;
+    private StaffService staffService;
 
     @GetMapping("/list")
     public String list(Model model) {
-        model.addAttribute("student",studentService.listAll() );
-        return "student/index"; 
+        model.addAttribute("staff",staffService.listAll() );
+        return "staff/index"; 
     }
 
     @GetMapping("/create")
     public String create(Model model) {
-        model.addAttribute("student", new Student());
-        return "student/create";
+        model.addAttribute("staff", new Staff());
+        return "staff/create";
     }
 
     @PostMapping("/save")
-    public String saveStudent(@ModelAttribute Student stu) {
-        studentService.saveStudent(stu);
+    public String saveStaff(@ModelAttribute Staff sta) {
+        staffService.saveStaff(sta);
         return "redirect:/users/list";
     }
     
     @GetMapping("/delete/{id}")
-    public String deleteStudent(@PathVariable Long id) {
-        studentService.deleteStudent(id);
+    public String deleteStaff(@PathVariable Long id) {
+        staffService.deleteStaff(id);
         return "redirect:/users/list";
     }
     @GetMapping("/edit/{id}")
-    public String editStudent(@PathVariable Long id,Model model) {
-        model .addAttribute("student",studentService.getStudent(id));
-        return "student/edit";
+    public String editStaff(@PathVariable Long id,Model model) {
+        model .addAttribute("staff",staffService.getStaff(id));
+        return "staff/edit";
     }
    
     @PostMapping("/update/{id}")
-    public String saveStudent(@PathVariable Long id, 
-        @ModelAttribute Student stu) {
+    public String saveStaff(@PathVariable Long id, 
+        @ModelAttribute Staff stu) {
            stu.setId(id);
-           studentService.saveStudent(stu);
+           Staff sta = null;
+                   staffService.saveStaff(sta);
            return "redirect:/users/list"; 
         }
     }

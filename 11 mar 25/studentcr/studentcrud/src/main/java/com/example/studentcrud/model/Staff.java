@@ -7,9 +7,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "students")
+@Table(name = "staff")
 
-public class Student {
+public class Staff {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,11 +18,7 @@ public class Student {
     private String email;
     private String phone;
     private String adress;
-    private String section;
-    private String gender;
-    private String DOB;
-    private String file;
-    private String Ack;
+   
     
     public Long getId( ) {
         return id;
@@ -60,36 +56,9 @@ public class Student {
     public void setAdress(String adress){
         this.adress = adress;
     }
-    public String getSection(){
-        return section;
+   
     }
-    public void setSection(String section){
-        this.section = section;
-    }
-    public String getGender(){
-        return gender;
-    }
-    public void setGender(String gender){
-        this.gender = gender;
-    }
-    public String getDOB(){
-        return DOB;
-    }
-    public void setDOB(String DOB){
-        this.DOB = DOB;
-    }
-    public String getFile(){
-        return file;
-    }
-    public void setFile(String file){
-        this.file = file;
-    }
-    public String getAck(){
-        return Ack;
-    }
-    public void setAck(String Ack){
-        this.Ack = Ack;
+   
+   
 
 
-    }
-}

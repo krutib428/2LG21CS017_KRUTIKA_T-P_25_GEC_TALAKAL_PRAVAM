@@ -10,44 +10,39 @@
 <body>
 
 <div class="container mt-3">
-    <h2>Student List</h2>
+    <h2>Employee List</h2>
+    <a th:href ="@{/krutika/create}" class = "btn btn-warning">Add Employee</a>
     <a th:href ="@{/users/create}" class = "btn btn-warning">Add Student</a>
-    <a th:href ="@{/ganga/create}" class = "btn btn-warning">Add Employee</a>
     <table class="table table-success table-striped">
     <thead class="table-dark">
       <tr>
         <th>ID</th>
         <th>Name</th>
-        <th>usn</th>
         <th>Email</th>
         <th>phone</th>
         <th>Adress</th>
         <th>Section</th>
         <th>Gender</th>
-        <th>DOB</th>
+        <TH>DOB</th>
         <th>File</th>
-        <th>Ack</th>
         <th>Action</th>
-        
 
       </tr>
     </thead>
     <tbody>
-      <tr th:each="stu: ${student}">
-        <td  th:text="${stu.id}"></td>
-        <td  th:text="${stu.name}"></td>
-        <td  th:text="${stu.usn}"></td>
-        <td  th:text="${stu.email}"></td>
-        <td  th:text="${stu.phone}"></td>
-        <td  th:text="${stu.adress}"></td>
-        <td  th:text="${stu.section}"></td>
-        <td  th:text="${stu.gender}"></td>
-        <td  th:text="${stu.DOB}"></td>
-        <td  th:text="${stu.file}"></td>
-        <td  th:text="${stu.Ack}"></td>
+      <tr th:each="emp: ${employee}">
+        <td  th:text="${emp.id}"></td>
+        <td  th:text="${emp.name}"></td>
+        <td  th:text="${emp.email}"></td>
+        <td  th:text="${emp.phone}"></td>
+        <td  th:text="${emp.adress}"></td>
+        <td  th:text="${emp.section}"></td>
+        <td  th:text="${emp.gender}"></td>
+        <td  th:text="${emp.DOB}"></td>
+        <td  th:text="${emp.file}"></td>
         <td>
-          <a th:href="@{/users/edit/{id}(id=${stu.id})}" class="btn btn-primary">Edit</a>
-          <a th:href="@{/users/delete/{id}(id=${stu.id})}" class="btn btn-danger">Delete</a>
+          <a th:href="@{/krutika/edit/{id}(id=${emp.id})}" class="btn btn-primary">Edit</a>
+          <a th:href="@{/krutika/delete/{id}(id=${emp.id})}" class="btn btn-danger">Delete</a>
 </td> 
       </tr>
     </tbody>

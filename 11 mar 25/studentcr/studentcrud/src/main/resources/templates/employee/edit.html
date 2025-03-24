@@ -3,38 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Student</title>
+    <title>Edit Employee</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    
 </head>
 <body>
     <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
         <div class="w-50">
-            <h1 class="mt-5 text-center">Edit Student</h1>
-            <form th:action="@{/users/update/{id}(id=${student.id})}" th:object="${student}" method="post" class="mt-3">
+            <h1 class="mt-5 text-center">Edit Employee</h1>
+            <form th:action="@{/krutika/update/{id}(id=${employee.id})}" th:object="${employee}" method="post" class="mt-3">
                
                 <input type="hidden" th:field="*{id}">
                 <div class="form-group">
-                    <label for="studentName">Name</label>
-                    <input type="text" class="form-control" id="studentName" th:field="*{name}" placeholder="Enter student name">
+                    <label for="employeeName">Name</label>
+                    <input type="text" class="form-control" id="employeeName" th:field="*{name}" placeholder="Enter employee name">
                 </div>
                 <div class="form-group">
-                    <label for="usn"style="color:white;">usn</label>
-                    <input type="text" class="form-control" id="studentusn" th:field="*{usn}" placeholder="Enter student usn">
+                    <label for="employeeEmail">Email</label>
+                    <input type="email" class="form-control" id="employeeEmail" th:field="*{email}" placeholder="Enter employee email">
                 </div>
                 <div class="form-group">
-                    <label for="studentEmail">Email</label>
-                    <input type="email" class="form-control" id="studentEmail" th:field="*{email}" placeholder="Enter student email">
+                    <label for="employeetAge">Phone</label>
+                    <input type="number" class="form-control" id="employeePhone" th:field="*{phone}" placeholder="Enter employee Phone">
                 </div>
                 <div class="form-group">
-                    <label for="studentAge">Phone</label>
-                    <input type="number" class="form-control" id="studentPhone" th:field="*{phone}" placeholder="Enter student Phone">
-                </div>
-                <div class="form-group">
-                    <label for="adress">Adress</label>
-                    <input type="text" class="form-control" id="studenteAdress" th:field="*{adress}" placeholder="Enter student Adress">
+                    <label for="employeetAge">Adress</label>
+                    <input type="text" class="form-control" id="employeeAdress" th:field="*{adress}" placeholder="Enter employee Adress">
                 </div>
                 <div class="form-check">
-                    <label for="studentesection">Section</label><br>
+                    <label for="employeesection">Section</label><br>
                     <select id="section" name=section>
                         <option value="A">A</option>
                         <option value="B">B</option>
@@ -43,7 +40,7 @@
                     </select><br>
                 </div>
                 <div class="form-check">
-                    <label for="studentegender">Gender</label><br>
+                    <label for="employeegender">Gender</label><br>
                     <select id="gender" name=gender>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
@@ -52,18 +49,14 @@
                 </div>
                 <div class="form-group">
                     <label for="DOB">date of birth</label>
-                    <input type="date" class="form-control" id="studentDOB" th:field="*{DOB}" placeholder="Enter student DOB">
+                    <input type="date" class="form-control" id="employeeDOB" th:field="*{DOB}" placeholder="Enter employee DOB">
                 </div>
                 <div class="form-group">
                     <label for="file"></label>
-                    <input type="file" class="form-control" id="studentfile" th:field="*{file}" placeholder="Enter student DOB">
+                    <input type="file" class="form-control" id="employeefile" th:field="*{file}" placeholder="Enter employee DOB">
                 </div>
-                <div class="form-group">
-                    <label for="Ack"style="color:white;">Academic year</label>
-                    <input type="date" class="form-control" id="studentAck" th:field="*{Ack}" placeholder="Enter student Ack">
-                </div>
-               
-               
+
+                
                 <button type="submit" class="btn btn-primary btn-block">Submit</button>
             </form>
         </div>

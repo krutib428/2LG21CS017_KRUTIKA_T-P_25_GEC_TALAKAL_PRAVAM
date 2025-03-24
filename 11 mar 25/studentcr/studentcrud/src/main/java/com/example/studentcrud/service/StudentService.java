@@ -29,4 +29,9 @@ public class StudentService {
     public void deleteStudent(Long id) {
         studentRepository.deleteById(id);
     }
+
+    public void save(Student stu) {
+       
+        throw new UnsupportedOperationException("Unimplemented method 'save'");
+    }
 }
