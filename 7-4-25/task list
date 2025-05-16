@@ -1,0 +1,112 @@
+package com.logistics.model;
+
+import javax.persistence.*;
+import java.util.Date;
+
+@Entity
+public class Task {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String taskName;            // Name of the task
+    private String description;         // Description of the task
+    private Date startDate;             // Task start date
+    private Date endDate;               // Task end date
+    private String status;              // Status of the task (Pending, In Progress, Completed)
+
+    @ManyToOne
+    private Employee assignedTo;        // The employee assigned to the task
+
+    @ManyToOne
+    private Location location;          // The location where the task will be performed
+
+    @ManyToMany
+    private Material materialsRequired; // Materials required for the task
+
+    @ManyToOne
+    private Equipment equipmentUsed;    // Equipment used for the task
+
+    // Getters and setters
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTaskName() {
+        return taskName;
+    }
+
+    public void setTaskName(String taskName) {
+        this.taskName = taskName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Employee getAssignedTo() {
+        return assignedTo;
+    }
+
+    public void setAssignedTo(Employee assignedTo) {
+        this.assignedTo = assignedTo;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public Material getMaterialsRequired() {
+        return materialsRequired;
+    }
+
+    public void setMaterialsRequired(Material materialsRequired) {
+        this.materialsRequired = materialsRequired;
+    }
+
+    public Equipment getEquipmentUsed() {
+        return equipmentUsed;
+    }
+
+    public void setEquipmentUsed(Equipment equipmentUsed) {
+        this.equipmentUsed = equipmentUsed;
+    }
+}

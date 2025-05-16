@@ -140,6 +140,7 @@ for(int j=1;j<=c-i;j++){
   }
   System.out.println();
 }
+
 }
 
 }
