@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>DASHMIN - Bootstrap Admin Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="/assets/img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="/assets/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="/assets/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="/assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-fluid position-relative bg-white d-flex p-0">
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+
+        <!-- Sidebar Start -->
+        <div class="sidebar pe-4 pb-3">
+            <nav class="navbar bg-light navbar-light">
+                <a th:href="@{/index}" class="navbar-brand mx-4 mb-3">
+                    <h3 class="text-primary"><i class="fa  me-2"></i>SLMT</h3>
+                </a>
+                <div class="d-flex align-items-center ms-4 mb-4">
+                    <div class="position-relative">
+                        <img class="rounded-circle" src="/assets/img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                        <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
+                    </div>
+                    <div class="ms-3">
+                        <h6 class="mb-0">Jhon Doe</h6>
+                        <span>Admin</span>
+                    </div>
+                </div>
+                <div class="navbar-nav w-100">
+                    <a th:href="@{/index}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Customers </a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                            <a th:href="@{/customerlist}"  class="dropdown-item">Customer list</a>
+                            <a th:href="@{/customerform}" class="dropdown-item active">Customer details form</a>
+                           
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Quotation </a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                            <a th:href="@{/quotationlist}" class="dropdown-item active">Quotation list</a>
+                            <a th:href="@{/quotationform}" class="dropdown-item active">Quotation form</a>
+                            
+                        </div>
+                    </div>
+                    <a th:href="@{/paymentlist}"  class="nav-item nav-link"><i class="fa fa-th me-2"></i>payment details</a>
+                    <a th:href="@{/quotationdetails}"  class="nav-item nav-link"><i class="fa fa-th me-2"></i>Quotation details</a>
+                    
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <!-- Sidebar End -->
+
+<!-- Content Start -->
+<div class="content">
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
+        <a th:href="@{/index}" class="navbar-brand d-flex d-lg-none me-4">
+            <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
+        </a>
+        <a href="#" class="sidebar-toggler flex-shrink-0">
+            <i class="fa fa-bars"></i>
+        </a>
+        <form class="d-none d-md-flex ms-4">
+            <input class="form-control border-0" type="search" placeholder="Search">
+        </form>
+        <div class="navbar-nav align-items-center ms-auto">
+             <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                    <img class="rounded-circle me-lg-2" src="/assets/img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                    <span class="d-none d-lg-inline-flex">John Doe</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+                    <a href="#" class="dropdown-item">My Profile</a>
+                    <a href="#" class="dropdown-item">Settings</a>
+                    <a href="#" class="dropdown-item">Log Out</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+     <!-- Form start -->
+     <div class="col-sm-12 col-xl-12">
+        <div class="bg-light rounded h-100 p-4">
+            <h6 class="mb-4">Material Form</h6>
+            <form id="quotationForm" th:action="@{/materiallist}" th:object="${material}" method="post">
+
+                    
+                <div class="row mb-3">
+                    <label for="quotationNumber" class="col-sm-2 col-form-label">Quotation number</label>
+                    <div class="col-sm-10">
+                        <input type="number" th:field="*{quotationNumber}" class="form-control" id="quotationNumber" required>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="customername" class="col-sm-2 col-form-label">Customer name</label>
+                    <div class="col-sm-10">
+                        <input type="text" th:field="*{customerName}" class="form-control" id="customername" required>
+                    </div>
+                </div>  
+                
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label">Materials</label>
+                    <div class="col-sm-10">
+                        <div id="materialsContainer">
+                            <!-- Material items will be added here -->
+                        </div>
+                        <button type="button" class="btn btn-sm btn-primary mt-2" id="addMaterialBtn">
+                            <i class="fa fa-plus me-1"></i> Add Material
+                        </button>
+            
+                    </div>
+                </div>
+                
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label">Total Price</label>
+                    <div class="col-sm-10">
+                        <div id="totalPriceContainer" class="form-control">
+                            ₹0.00
+                        </div>
+                        <input type="hidden" id="totalPrice" name="totalPrice" value="0">
+                    </div>
+                </div>
+                
+                <div class="row mb-3">
+                    <div class="col-sm-10 offset-sm-2">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="reset" class="btn btn-secondary ms-2">Reset</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Form end -->
+
+
+    <!-- Table start -->
+            <div class="bg-light rounded h-100 p-4">
+                <h6 class="mb-4">Material list</h6>
+                <div class="table-responsive">
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Quotation no</th>
+                                <th scope="col">Customer name</th>
+                                <th scope="col">Material name</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Price</th>
+                                
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="mat, iStat : ${materialList}">
+                              <td th:text="${mat.quotationNumber}"></td>
+                              <td th:text="${mat.customerName}"></td>
+                              <td th:text="${mat.name}"></td>
+                              <td th:text="${mat.quantity}"></td>
+                              <td th:text="${mat.price}"></td>
+                            </tr>
+                        </tbody>
+                        
+                        
+                    </table>
+                </div>
+            </div>
+        
+<!-- Table End -->
+
+
+           
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/lib/chart/chart.min.js"></script>
+    <script src="/assets/lib/easing/easing.min.js"></script>
+    <script src="/assets/lib/waypoints/waypoints.min.js"></script>
+    <script src="/assets/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/assets/lib/tempusdominus/js/moment.min.js"></script>
+    <script src="/assets/lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="/assets/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="/assets/js/main.js"></script>
+    
+    <script>
+        $(document).ready(function() {
+            // Add first material item by default
+            addMaterialItem();
+            
+            // Add material item when button is clicked
+            $('#addMaterialBtn').click(function() {
+                addMaterialItem();
+            });
+            // Save material (lock the fields)
+        $(document).on('click', '.save-material', function() {
+                const item = $(this).closest('.material-item');
+                item.find('select, input, textarea').attr('readonly', true).attr('disabled', true);
+                $(this).removeClass('fa-save').addClass('fa-lock').attr('title', 'Saved');
+            });
+
+// Delete material
+        $(document).on('click', '.remove-material', function() {
+                $(this).closest('.material-item').remove();
+                calculateTotal();
+            });
+
+            
+            
+           
+            
+            // Calculate total when quantity or price changes
+            $(document).on('input', '.quantity, .price', function() {
+                calculateItemTotal($(this).closest('.material-item'));
+                calculateTotal();
+            });
+            
+            
+        });
+        
+       function addMaterialItem() {
+    const index = $('.material-item').length; // for array-style naming
+    const materialItem = `
+        <div class="material-item">
+            <div class="row mb-3">
+                <div class="col-sm-5">
+                    <select class="form-select material-select" name="materialList[${index}].name" required>
+                        <option value="" selected disabled>Select material</option>
+                        <option value="Plastic">Plastic</option>
+                        <option value="Concrete">Concrete</option>
+                        <option value="Sand">Sand</option>
+                        <option value="Stone">Stone</option>
+                        <option value="Brick">Brick</option>
+                        <option value="Water">Water</option>
+                        <option value="Glass">Glass</option>
+                        <option value="Pipe">Pipe</option>
+                        <option value="Concrete Block">Concrete Block</option>
+                        <option value="Ceramic">Ceramic</option>
+                    </select>
+                </div>
+                <div class="col-sm-2">
+                    <input type="number" class="form-control quantity" name="materialList[${index}].quantity" placeholder="Qty" min="1" required>
+                </div>
+                <div class="col-sm-2">
+                    <input type="number" step="0.01" class="form-control price" name="materialList[${index}].price" placeholder="Price" min="0" required>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control item-total" placeholder="Total" readonly>
+                </div>
+                <div class="col-sm-1 text-end">
+                    <span class="remove-material text-danger me-2" title="Delete"><i class="fa fa-trash"></i></span>
+                    <span class="save-material text-success" title="Save"><i class="fa fa-save"></i></span>
+                </div>
+            </div>
+        </div>
+    `;
+    $('#materialsContainer').append(materialItem);
+}
+
+
+        
+        function calculateItemTotal(item) {
+            const quantity = parseFloat(item.find('.quantity').val()) || 0;
+            const price = parseFloat(item.find('.price').val()) || 0;
+            const total = quantity * price;
+            item.find('.item-total').val(total.toFixed(2));
+        }
+        
+        function calculateTotal() {
+            let grandTotal = 0;
+            $('.material-item').each(function() {
+                const itemTotal = parseFloat($(this).find('.item-total').val()) || 0;
+                grandTotal += itemTotal;
+            });
+            
+            $('#totalPriceContainer').text('₹' + grandTotal.toFixed(2));
+            $('#totalPrice').val(grandTotal.toFixed(2));
+        }
+    </script>
+</body>
+
+</html>
